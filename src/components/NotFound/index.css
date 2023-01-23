@@ -1,0 +1,16 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.home-page-button {
+  width: 123px;
+  height: 48px;
+
+  background: #f7931e;
+  border-radius: 12px;
+  border-color: transparent;
+  color: #ffffff;
+}

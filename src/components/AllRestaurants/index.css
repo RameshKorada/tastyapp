@@ -1,0 +1,65 @@
+.restaurant-images {
+  width: 200px;
+  border-radius: 10px;
+  padding-right: 10px;
+  height: 120px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+.restimage-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+}
+.res-name {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+
+  letter-spacing: 0.2px;
+
+  color: #334155;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.rest-list {
+  margin: 20px;
+  margin-left: 0px;
+}
+.fast-foodItems {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #64748b;
+}
+.fast-foodItems {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.total-span {
+  padding-left: 10px;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+
+  color: #64748b;
+}
+.reviews {
+  padding-top: 0px;
+  margin-top: 0px;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+
+  color: #1e293b;
+}

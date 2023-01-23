@@ -1,0 +1,73 @@
+.header-container {
+  background-color: #f8f9fc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+  list-style-type: none;
+}
+.header-logo-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.header-list-items {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-cart {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+
+  color: #334155;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.header-tasty-kitchens {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 24px;
+
+  color: #f7931e;
+}
+.header-logout {
+  background: #f7931e;
+  border-radius: 8px;
+  padding: 5px;
+  width: 70px;
+  outline: transparent;
+  border-color: transparent;
+  color: #ffffff;
+  font-size: 15px;
+}
+.header-home-cart {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+
+  color: #f7931e;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.header-home-cart-false {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.header-tasty-kitchens {
+  padding-left: 10px;
+}
+.linked-elements {
+  text-decoration: none;
+}

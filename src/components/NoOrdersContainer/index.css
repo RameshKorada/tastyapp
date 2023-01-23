@@ -1,0 +1,12 @@
+.noOrder-container {
+  text-align: center;
+}
+.ordernow-button {
+  background-color: transparent;
+  background-color: #f7931e;
+  border-radius: 8px;
+  border-color: transparent;
+  padding: 6px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}

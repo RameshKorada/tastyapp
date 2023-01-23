@@ -1,0 +1,17 @@
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.goto-home-button {
+  width: 131px;
+  height: 32px;
+
+  background: #f7931e;
+  border-radius: 8px;
+  border-color: transparent;
+  outline: none;
+  color: #ffffff;
+}

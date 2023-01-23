@@ -1,0 +1,93 @@
+.each-image-element {
+  width: 220px;
+  height: 140px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+.each-item-li {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  align-items: center;
+  margin: 15px;
+}
+.item-name-element {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+
+  color: #334155;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.item-rating {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+
+  color: #0a1f44;
+  padding: 0px;
+  margin: 4px;
+}
+.item-add-button {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+
+  color: #ffa412;
+
+  /* Inside auto layout */
+
+  margin: 0px;
+
+  border: 2px solid #ffa412;
+  width: 50px;
+  height: 25px;
+
+  background-color: transparent;
+  border-radius: 4px;
+}
+.item-cost {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  color: #334155;
+  padding: 0px;
+  margin: 4px;
+}
+.increse-decrease-buttons {
+  background-color: transparent;
+
+  border-radius: 2px;
+}
+.add-element {
+  padding: 5px;
+}
+.add-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.add-remove-button {
+  height: 20px;
+  width: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border-color: transparent;
+  background-color: transparent;
+}
+.plus-minus-button {
+}
