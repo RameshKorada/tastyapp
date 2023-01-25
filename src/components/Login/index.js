@@ -89,9 +89,9 @@ class Login extends Component {
             <h1 className="login-name">Login</h1>
             <div className="react-image-container">
               <img
+                alt="website sm logo"
                 className="rect-image"
                 src="https://res.cloudinary.com/dffvdqu7f/image/upload/v1674370806/Rectangle_1457_g6c519.png"
-                alt="website login"
               />
             </div>
           </div>

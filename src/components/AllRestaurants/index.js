@@ -1,12 +1,13 @@
-import './index.css'
 import {Link} from 'react-router-dom'
+import {MdStarRate} from 'react-icons/md'
+import './index.css'
 
 const AllRestaurants = props => {
   const {allRestauratnsList} = props
   const {resName, imageUrl, userRating, totalReview, id} = allRestauratnsList
   return (
-    <li className="rest-list">
-      <Link className="linked-elements" to={`/restaurant/${id}`}>
+    <Link className="linked-elements" to={`/restaurant/${id}`}>
+      <li testid="restaurant-item" className="rest-list">
         <div className="restimage-name-container">
           <img
             className="restaurant-images"
@@ -14,16 +15,16 @@ const AllRestaurants = props => {
             alt="restaurant name"
           />
           <div className="name-fast-rating">
-            <p className="res-name">{resName}</p>
+            <h1 className="res-name">{resName}</h1>
             <p className="fast-foodItems">Faast Food</p>
             <p className="reviews">
-              {userRating}
+              <MdStarRate className="star" /> {userRating}
               <span className="total-span">({totalReview} ratings)</span>
             </p>
           </div>
         </div>
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
 

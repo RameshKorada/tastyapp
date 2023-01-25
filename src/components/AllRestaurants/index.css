@@ -6,12 +6,31 @@
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
 }
+@media (max-width: 560px) {
+  .restaurant-images {
+    width: 180px;
+    border-radius: 10px;
+    padding-right: 10px;
+    height: 130px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+  }
+}
 .restimage-name-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   width: 400px;
+}
+@media (max-width: 560px) {
+  .restimage-name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: column;
+    align-items: center;
+    width: 100%;
+  }
 }
 .res-name {
   font-family: 'DM Sans';
@@ -29,6 +48,12 @@
 .rest-list {
   margin: 20px;
   margin-left: 0px;
+}
+@media (max-width: 560px) {
+  .rest-list {
+    margin: 10px;
+    margin-left: 0px;
+  }
 }
 .fast-foodItems {
   font-family: 'DM Sans';
@@ -62,4 +87,13 @@
   font-size: 14px;
 
   color: #1e293b;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.star {
+  color: #ffcc00;
+  font-size: 19px;
+  padding-bottom: 2px;
 }

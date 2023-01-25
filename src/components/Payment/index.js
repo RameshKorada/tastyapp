@@ -9,8 +9,14 @@ class Payment extends Component {
       <div>
         <Header />
         <div className="payment-container">
+          <img
+            src="https://res.cloudinary.com/dffvdqu7f/image/upload/v1674480360/Vector_2_w2rvlu.png"
+            alt="success"
+          />
           <h1>Payment Successful</h1>
-          <p>Thank you for ordering Your payment is successfully completed.</p>
+          <p className="thank-you">
+            Thank you for ordering Your payment is successfully completed.
+          </p>
           <div>
             <Link to="/">
               <button className="goto-home-button" type="button">

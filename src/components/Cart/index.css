@@ -15,6 +15,12 @@
 
   color: #475569;
 }
+
+@media (max-width: 750px) {
+  .cart-ul {
+    display: none;
+  }
+}
 .ul-cart-item-container {
   display: flex;
   flex-direction: column;
@@ -33,6 +39,14 @@
 
   border: 1px solid rgba(11, 105, 255, 0.1);
 }
+@media (max-width: 750px) {
+  .cart-bg-container {
+    margin: 0px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+  }
+}
 .quantity-element {
   margin-left: center;
 }
@@ -45,6 +59,8 @@
 .cart-element {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 .hr-line-dotted {
   border: 1px dashed #cbd2d9;
@@ -77,11 +93,21 @@
 
   color: #3e4c59;
 }
-.order-total {
+@media (max-width: 750px) {
+  .order-total {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+
+    color: #3e4c59;
+  }
+}
+.header-tasty-kitchens {
   font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 700;
   font-size: 24px;
 
-  color: #3e4c59;
+  color: #f7931e;
 }

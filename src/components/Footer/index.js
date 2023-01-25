@@ -23,16 +23,16 @@ export default function Footer() {
         The only thing we are serious about is food. Contact us on
       </p>
       <FaPinterestSquare
-        //  testid="pintrest-social-icon"
+        testid="pintrest-social-icon"
         className="tasty-foot-icons"
       />
       <FaInstagram
-        //   testid="instagram-social-icon"
+        testid="instagram-social-icon"
         className="tasty-foot-icons"
       />
       <FaTwitter testid="twitter-social-icon" className="tasty-foot-icons" />
       <FaFacebookSquare
-        // testid="facebook-social-icon"
+        testid="facebook-social-icon"
         className="tasty-foot-icons"
       />
     </div>

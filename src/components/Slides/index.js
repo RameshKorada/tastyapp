@@ -4,7 +4,7 @@ const Slides = props => {
   const {offerImage} = props
   const {offerImageUrl} = offerImage
   return (
-    <li>
+    <li className="li-slides">
       <img className="offer-image" src={offerImageUrl} alt="offer" />
     </li>
   )

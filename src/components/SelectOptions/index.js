@@ -6,7 +6,7 @@ const SelectOptions = props => {
   // const selectOpt = selected ? 'Lowest' : 'Highest'
 
   return (
-    <option value={value} selected>
+    <option className="select" value={value}>
       {displayText}
     </option>
   )

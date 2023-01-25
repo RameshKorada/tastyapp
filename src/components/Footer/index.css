@@ -34,3 +34,30 @@
 
   color: #ffffff;
 }
+@media (max-width: 750px) {
+  .tasty-foot-icons {
+    font-size: 30px;
+    color: #ffffff;
+    margin: 5px;
+  }
+  .tasty-foot-name {
+    font-family: 'DM Sans';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 25px;
+
+    color: #ffffff;
+  }
+  .tasty-foot-para {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 32px;
+    /* or 133% */
+
+    text-align: center;
+
+    color: #ffffff;
+  }
+}

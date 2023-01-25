@@ -1,14 +1,8 @@
-import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
+import {BsDashSquare, BsPlusSquare} from 'react-icons/bs'
+import {MdStarRate} from 'react-icons/md'
+import {BiRupee} from 'react-icons/bi'
 
 import './index.css'
-
-/*  {onAdd ? (
-                    <div className="add-container">
-                      <BsPlusSquare />
-                      <span className="add-element">1</span>
-                      <BsDashSquare />
-                    </div>
-                  ) : (  */
 
 const AllItems = props => {
   const {
@@ -17,14 +11,8 @@ const AllItems = props => {
     empList,
     reduceFunction,
     onAddfunction,
-    countNumber,
   } = props
-  const {imageUrl, name, rating, cost, id} = eachItem
-  console.log(countNumber)
-
-  // const fromLocalStorage = localStorage.getItem('onAdd')
-
-  // const parsedLocal = JSON.parse(fromLocalStorage)
+  const {imageUrl, name, rating, cost, id, count} = eachItem
 
   const filterData = empList.filter(eachObj => eachObj.id === id)
 
@@ -37,44 +25,45 @@ const AllItems = props => {
 
   const onAddbutton = () => {
     //   console.log(eachItem)
+    localStorage.setItem('asdd', 'asadas')
     const obj = {
       ...eachItem,
-      count: 1,
     }
 
     eachtemIntoArray(obj, id)
-  } // console.log(filterData) // console.log(filterData.length, 'length')
-
-  /* if (filterData.length !== 0) {
-    //  console.log('no data')
-    const filterobj = filterData[0]
-    const filterNumber = filterobj.count
-    console.log(filterNumber)
-    someFunction(filterNumber)
   }
-  */ return (
-    <li className="each-item-li">
+
+  return (
+    <li testid="foodItem" className="each-item-li">
       <img className="each-image-element" src={imageUrl} alt={name} />
       <div>
         <h1 className="item-name-element">{name}</h1>
-        <p className="item-cost">{cost}</p>
-        <p className="item-rating">{rating}</p>
-
+        <div className="star-rating">
+          <BiRupee /> <p className="item-cost">{cost}</p>
+        </div>
+        <div className="star-rating">
+          <MdStarRate className="star" />
+          <p className="item-rating">{rating}</p>
+        </div>
         {filterData.length > 0 && (
           <div className="add-container">
             <button
               onClick={onReduce}
               className="add-remove-button"
               type="button"
+              testid="minus"
             >
               <BsDashSquare />
             </button>
+            <span testid="active-count" className="add-element">
+              {count}
+            </span>
 
-            <span className="add-element">{countNumber}</span>
             <button
               onClick={onIncrease}
               className="add-remove-button"
               type="button"
+              testid="plus"
             >
               <BsPlusSquare className="plus-minus-button" />
             </button>

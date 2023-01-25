@@ -6,6 +6,11 @@
 
   margin-top: 30px;
 }
+@media (max-width: 750px) {
+  .cart-item-list {
+    display: none;
+  }
+}
 .cart-image {
   width: 120px;
   height: 80px;
@@ -15,7 +20,10 @@
   padding-right: 10px;
   width: 33.33%;
   text-align: end;
+  color: #ffa412;
+  font-weight: 700;
 }
+
 .cart-name-container {
   display: flex;
   flex-direction: row;
@@ -23,6 +31,7 @@
   align-items: center;
   width: 33.33%;
 }
+
 .item-name {
   font-family: 'DM Sans';
   font-style: normal;
@@ -35,4 +44,90 @@
 .items-count {
   width: 33.33%;
   text-align: center;
+}
+.count-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-element {
+  color: #475569;
+}
+@media (max-width: 750px) {
+  .cart-image {
+    width: 120px;
+    height: 80px;
+  }
+  .item-name-mini {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+
+    color: #183b56;
+  }
+  .cart-item-list-mini {
+    padding: 0px;
+  }
+  .cart-item-list-mini {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .add-container-mini {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    padding-left: 20px;
+  }
+  .count-container-mini {
+    padding-top: 0px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .cost-element-mini {
+    color: #ffa412;
+    font-weight: 700;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  .cost-rupee-mini {
+    padding-top: 0px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffa412;
+  }
+  .cost-element-mini {
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+  .rate {
+    padding-top: 0px;
+    margin-bottom: 13px;
+  }
+}
+@media (min-width: 750px) {
+  .cart-item-list-mini {
+    display: none;
+  }
+}
+.cost-rupee {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #ffa412;
 }

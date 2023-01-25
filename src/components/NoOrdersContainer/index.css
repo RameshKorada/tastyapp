@@ -1,5 +1,6 @@
 .noOrder-container {
   text-align: center;
+  padding: 20px;
 }
 .ordernow-button {
   background-color: transparent;
@@ -9,4 +10,13 @@
   padding: 6px;
   color: #ffffff;
   margin-bottom: 10px;
+}
+.your-cart-name {
+  text-align: center;
+}
+.emp-cart-image {
+  width: 100%;
+}
+.no-order {
+  color: #1e293b;
 }

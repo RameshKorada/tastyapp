@@ -8,6 +8,19 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+@media (max-width: 560px) {
+  .home-section {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .hr-line-home {
+    display: none;
+  }
+  .home-container-resta {
+    margin: 17px;
+  }
+}
+
 .pop-rest {
   font-family: 'DM Sans';
   font-style: normal;
@@ -42,6 +55,28 @@
   color: #475569;
   padding-top: 0px;
   margin-top: 0px;
+}
+
+@media (max-width: 560px) {
+  .selectfav-sort {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+
+    /* identical to box height, or 150% */
+
+    /* Light / blue-gray / 600 */
+
+    color: #475569;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
 }
 .ul-all-restaurants {
   list-style-type: none;
@@ -89,12 +124,40 @@
   margin: 0px;
   padding: 0px;
 }
+@media (max-width: 560px) {
+  .container {
+    list-style-type: none;
+    padding-right: 0px;
+    margin-right: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+}
 .sort-select {
   display: flex;
   flex-direction: row;
 }
+
 .select-element {
   outline: none;
   border-color: transparent;
   padding: 0px;
+}
+@media (max-width: 560px) {
+  .select-element {
+    outline: none;
+    border-color: transparent;
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 19px;
+  }
+  .select-fav {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .sort-select {
+    display: flex;
+    flex-direction: row;
+    font-size: 19px;
+  }
 }

@@ -44,8 +44,8 @@ class Cart extends Component {
       <div className="cart-element">
         <Header />
         {cartList.length > 0 ? (
-          <div className="cart-element">
-            <div className="cart-bg-container">
+          <div testid="cartItem" className="cart-element">
+            <div testid="cartItem" className="cart-bg-container">
               <div>
                 <ul className="cart-ul">
                   <li>Item</li>
@@ -54,7 +54,7 @@ class Cart extends Component {
                 </ul>
               </div>
 
-              <div>
+              <div testid="cartItem">
                 <ul className="ul-cart-item-container">
                   {cartList.map(eachItem => (
                     <CartItem eachItem={eachItem} key={eachItem.id} />
@@ -74,7 +74,9 @@ class Cart extends Component {
                 </div>
               </div>
             </div>
-            <Footer />
+            <div className="foot-cart">
+              <Footer />
+            </div>
           </div>
         ) : (
           <div className="no-orders-container">

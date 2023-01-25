@@ -1,8 +1,12 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {MdStarRate} from 'react-icons/md'
+import {BiRupee} from 'react-icons/bi'
 import Header from '../Header'
 import Loading from '../Loading'
+import RestuarentListItem from '../RestuarentListItem'
+
 import AllItems from '../AllItems'
 import Footer from '../Footer'
 
@@ -13,20 +17,20 @@ class RestaurantDetails extends Component {
     restaurantProfile: {},
     allItemsList: [],
     empList: [],
-
+    isloading: true,
     countNumber: 1,
   }
 
   componentDidMount() {
-    const {empList} = this.state
+    //   const {empList} = this.state
     this.restaurantItemsApi()
 
     const fromlocal = localStorage.getItem('onAdd')
 
     if (fromlocal !== null) {
-      console.log(empList, 'iam not called')
+      //     console.log(empList, 'iam not called')
       const parsedData = JSON.parse(fromlocal)
-      console.log(parsedData)
+      //    console.log(parsedData)
       this.setState({empList: parsedData})
     }
   }
@@ -51,8 +55,8 @@ class RestaurantDetails extends Component {
     //   console.log(jsonRestaurantData)
     if (jsonRestaurantData.ok === true) {
       const jsDataRestaurant = await jsonRestaurantData.json()
-      console.log(jsDataRestaurant)
-      const restaurantProfile = {
+      //     console.log(jsDataRestaurant)
+      const restaurantProfileo = {
         resImg: jsDataRestaurant.image_url,
         kindName: jsDataRestaurant.cuisine,
         location: jsDataRestaurant.location,
@@ -61,6 +65,7 @@ class RestaurantDetails extends Component {
         costPerTwo: jsDataRestaurant.cost_for_two,
         resName: jsDataRestaurant.name,
       }
+
       //   this.restaurantDetailsView(restaurantProfile)
 
       const foodItems = jsDataRestaurant.food_items
@@ -72,22 +77,36 @@ class RestaurantDetails extends Component {
         imageUrl: eachItem.image_url,
         name: eachItem.name,
         rating: eachItem.rating,
+        count: 1,
       }))
-      this.setState({
-        isloading: false,
-        restaurantProfile,
-        allItemsList: foodItemsList,
-      })
+      const gettingFromLocalSt = localStorage.getItem('fromapilist')
+      const parsedData = JSON.parse(gettingFromLocalSt)
+
+      if (gettingFromLocalSt === null) {
+        localStorage.setItem('fromapilist', JSON.stringify(foodItemsList))
+
+        this.setState({
+          allItemsList: foodItemsList,
+          restaurantProfile: restaurantProfileo,
+        })
+      } else {
+        this.setState({
+          isloading: false,
+          restaurantProfile: restaurantProfileo,
+          allItemsList: parsedData,
+        })
+      }
     }
   }
 
   reduceFunction = id => {
-    const {empList} = this.state
+    const {empList, allItemsList} = this.state
+
     const gettingFromLocal = localStorage.getItem('onAdd')
     const parsedData = JSON.parse(gettingFromLocal)
     const filterid = empList.filter(each => each.id === id)
     const filterDatanon = empList.filter(eachid => eachid.id !== id)
-    console.log(filterDatanon)
+    //   console.log(filterDatanon)
     const idobj = filterid[0]
     const ccc = idobj.count
 
@@ -95,39 +114,50 @@ class RestaurantDetails extends Component {
 
     //  console.log(idobj.count === 0)
     if (idobj.count === 0) {
-      console.log('yes')
+      //   console.log('yes')
       const filterDatanonP = parsedData.filter(eachid => eachid.id !== id)
-      console.log(filterDatanonP, 'filterDatap')
+      //   console.log(filterDatanonP, 'filterDatap')
       localStorage.setItem('onAdd', JSON.stringify(filterDatanonP))
       // this.setState({count: ccc})
       // console.log(filterDatanonP)
-      this.setState({empList: filterDatanonP, countNumber: ccc})
+      this.setState({
+        empList: filterDatanonP,
+        countNumber: ccc,
+      })
     } else {
+      const updatedList = allItemsList.map(obj =>
+        obj.id === id ? {...obj, count: obj.count - 1} : obj,
+      )
+      localStorage.setItem('fromapilist', JSON.stringify(updatedList))
+
       filterDatanon.push(idobj)
       localStorage.setItem('onAdd', JSON.stringify(filterDatanon))
-
-      this.setState({countNumber: ccc - 1})
+      this.setState({countNumber: ccc - 1, allItemsList: updatedList})
     }
   }
 
   onAddfunction = (id, cost) => {
     const {empList} = this.state
-    //  const gettingFromLocal = localStorage.getItem('onAdd')
-    //  const parsedData = JSON.parse(gettingFromLocal)
+    const gettingFromLocal = localStorage.getItem('fromapilist')
+    const parsedDataFromLocal = JSON.parse(gettingFromLocal)
+    const updatedList = parsedDataFromLocal.map(obj =>
+      obj.id === id ? {...obj, count: obj.count + 1} : obj,
+    )
+    localStorage.setItem('fromapilist', JSON.stringify(updatedList))
+
     const filterid = empList.filter(each => each.id === id)
     const filterDatanon = empList.filter(eachid => eachid.id !== id)
-    console.log(filterDatanon)
     const idobj = filterid[0]
     const ccc = idobj.count
 
     idobj.count = ccc + 1
 
     filterDatanon.push(idobj)
-    console.log(filterid)
+    //   console.log(filterid)
     const costFromlocal = idobj.cost
     idobj.cost = costFromlocal + cost
     localStorage.setItem('onAdd', JSON.stringify(filterDatanon))
-    this.setState({countNumber: ccc + 1})
+    this.setState({countNumber: ccc + 1, allItemsList: updatedList})
   }
 
   // each item into array
@@ -136,7 +166,7 @@ class RestaurantDetails extends Component {
 
     const fromLocal = localStorage.getItem('onAdd')
     const countNumberObj = obj.count
-    console.log(countNumberObj, 'aasda')
+    //   console.log(countNumberObj, 'aasda')
     if (fromLocal === null) {
       const l = []
       l.push(obj)
@@ -151,11 +181,8 @@ class RestaurantDetails extends Component {
       }))
     } else {
       const fromLocalst = localStorage.getItem('onAdd')
-      //  console.log(JSON.parse(fromLocalst))
       const parsedList = JSON.parse(fromLocalst)
-      // const fil = parsedList.filter(eachid => eachid.id !== id)
-      //   console.log(fil)
-      // console.log(id)
+
       parsedList.push(obj)
       localStorage.setItem('onAdd', JSON.stringify(parsedList))
       this.setState({empList: parsedList, countNumber: countNumberObj})
@@ -175,14 +202,15 @@ class RestaurantDetails extends Component {
       countNumber,
     } = this.state
 
-    console.log(countNumber, 'count number is')
-
     return (
       <div>
         <Header />
         <div>
           {isloading ? (
-            <div className="loading-container">
+            <div
+              testid="restaurant-details-loader"
+              className="loading-container"
+            >
               <Loading />
             </div>
           ) : (
@@ -191,7 +219,7 @@ class RestaurantDetails extends Component {
                 <img
                   className="restaurant-image-banner"
                   src={restaurantProfile.resImg}
-                  alt="restaurant logo"
+                  alt="restaurant"
                 />
                 <div>
                   <h1 className="rest-name">{restaurantProfile.resName}</h1>
@@ -199,7 +227,10 @@ class RestaurantDetails extends Component {
                   <p className="rest-profile">{restaurantProfile.location}</p>
                   <div className="rating-cost-container">
                     <div>
-                      <p className="cost-rating">{restaurantProfile.rating}</p>
+                      <p className="cost-rating">
+                        <MdStarRate className="star" />
+                        {restaurantProfile.rating}
+                      </p>
                       <p className="rating-cost">
                         {restaurantProfile.reviewCount}+ratings
                       </p>
@@ -207,7 +238,7 @@ class RestaurantDetails extends Component {
                     <hr className="hr-line" />
                     <div className="cost-per-two">
                       <p className="cost-rating">
-                        {restaurantProfile.costPerTwo}
+                        <BiRupee /> {restaurantProfile.costPerTwo}
                       </p>
                       <p className="rating-cost">cost for two</p>
                     </div>

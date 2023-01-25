@@ -4,6 +4,13 @@
   border-radius: 5px;
   margin-right: 20px;
 }
+@media (max-width: 850px) {
+  .each-image-element {
+    width: 200px;
+    height: 130px;
+    border-radius: 5px;
+  }
+}
 .each-item-li {
   width: 45%;
   display: flex;
@@ -12,6 +19,16 @@
 
   align-items: center;
   margin: 15px;
+}
+@media (max-width: 850px) {
+  .each-item-li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    margin: 7px;
+  }
 }
 .item-name-element {
   font-family: 'DM Sans';
@@ -90,4 +107,10 @@
   background-color: transparent;
 }
 .plus-minus-button {
+}
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
