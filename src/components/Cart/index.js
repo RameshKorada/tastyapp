@@ -29,8 +29,15 @@ class Cart extends Component {
         console.log(sum)
 
         this.setState({cartList: parsedData, totalcost: sum})
+      } else {
+        this.setState({cartList: parsedData})
       }
     }
+  }
+
+  removieList = () => {
+    localStorage.removeItem('onAdd')
+    localStorage.removeItem('fromapilist')
   }
 
   render() {
@@ -44,8 +51,8 @@ class Cart extends Component {
       <div className="cart-element">
         <Header />
         {cartList.length > 0 ? (
-          <div testid="cartItem" className="cart-element">
-            <div testid="cartItem" className="cart-bg-container">
+          <div className="cart-element">
+            <div className="cart-bg-container">
               <div>
                 <ul className="cart-ul">
                   <li>Item</li>
@@ -54,10 +61,14 @@ class Cart extends Component {
                 </ul>
               </div>
 
-              <div testid="cartItem">
+              <div>
                 <ul className="ul-cart-item-container">
                   {cartList.map(eachItem => (
-                    <CartItem eachItem={eachItem} key={eachItem.id} />
+                    <CartItem
+                      eachItem={eachItem}
+                      key={eachItem.id}
+                      fromlocalstorage={this.fromlocalstorage}
+                    />
                   ))}
                 </ul>
               </div>
@@ -67,7 +78,11 @@ class Cart extends Component {
                 <div className="place-order-cotainer">
                   <h1 className="order-total">₹{totalcost}.00</h1>
                   <Link to="/paymentsuccessed">
-                    <button className="place-order-button" type="button">
+                    <button
+                      className="place-order-button"
+                      type="button"
+                      onClick={this.removieList}
+                    >
                       Place Order
                     </button>
                   </Link>

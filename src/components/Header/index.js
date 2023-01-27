@@ -7,10 +7,17 @@ import Hamburger from '../Hamburger'
 import './index.css'
 
 class Header extends Component {
-  state = {status: true, statusCart: true, hambergerStatus: false}
+  state = {
+    hambergerStatus: false,
+    colorStatus: true,
+  }
 
   componentDidMount() {
-    this.setState({status: true, statusCart: false})
+    const {match} = this.props
+    const {path} = match
+    if (path === '/Cart') {
+      this.setState({colorStatus: false})
+    }
   }
 
   onLogout = () => {
@@ -20,12 +27,8 @@ class Header extends Component {
     console.log(history)
   }
 
-  onHome = () => {
-    this.setState({status: false, statusCart: true})
-  }
-
   onCart = () => {
-    this.setState({statusCart: true, status: false})
+    this.setState({colorStatus: false})
   }
 
   onhamburger = () => {
@@ -33,11 +36,10 @@ class Header extends Component {
   }
 
   render() {
-    const {status, statusCart, hambergerStatus} = this.state
-    const fontColor = status ? 'header-home-cart' : 'header-home-cart-false'
-    const fontColorCart = statusCart
-      ? 'header-home-cart'
-      : 'header-home-cart-false'
+    const {hambergerStatus, colorStatus} = this.state
+
+    const fontcolor = colorStatus ? 'home' : 'cart'
+    const fontcolorCart = colorStatus ? 'cart' : 'home'
 
     return (
       <>
@@ -52,16 +54,15 @@ class Header extends Component {
             <p className="header-tasty-kitchens">Tasty Kitchens</p>
           </div>
           <ul className="header-list-items">
-            <Link className="linked-elements" to="/">
-              <li className={fontColor} onClick={this.onHome}>
-                Home
-              </li>
+            <Link className={`linked-elements ${fontcolor}`} to="/">
+              <li onClick={this.onHome}>Home</li>
             </Link>
-            <Link className="linked-elements" to="/Cart">
-              <li className={fontColorCart} onClick={this.onCart}>
+
+            <li onClick={this.onCart}>
+              <Link className={`linked-elements ${fontcolorCart}`} to="/cart">
                 Cart
-              </li>
-            </Link>
+              </Link>
+            </li>
             <li>
               <button
                 type="button"
@@ -79,8 +80,8 @@ class Header extends Component {
         <div>
           {hambergerStatus && (
             <Hamburger
-              fontColor={fontColor}
-              fontColorCart={fontColorCart}
+              fontColor={fontcolor}
+              fontColorCart={fontcolorCart}
               onHome={this.onHome}
               onCart={this.onCart}
               onLogout={this.onLogout}

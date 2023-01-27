@@ -26,7 +26,7 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/" component={HomeRoute} />
       <Route exact path="/restaurant/:id" component={RestaurantDetails} />
-      <Route exact path="/Cart" component={Cart} />
+      <Route exact path="/cart" component={Cart} />
       <Route exact path="/paymentsuccessed" component={Payment} />
       <Route exact path="/not-found" component={NotFound} />
       <Redirect to="/not-found" />

@@ -4,7 +4,6 @@ import {
   FaTwitter,
   FaFacebookSquare,
 } from 'react-icons/fa'
-// import {FaPinterestSquare} from 'react-icons/fa'
 
 import './index.css'
 

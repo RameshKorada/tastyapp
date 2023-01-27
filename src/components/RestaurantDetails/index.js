@@ -5,7 +5,6 @@ import {MdStarRate} from 'react-icons/md'
 import {BiRupee} from 'react-icons/bi'
 import Header from '../Header'
 import Loading from '../Loading'
-import RestuarentListItem from '../RestuarentListItem'
 
 import AllItems from '../AllItems'
 import Footer from '../Footer'
@@ -88,6 +87,7 @@ class RestaurantDetails extends Component {
         this.setState({
           allItemsList: foodItemsList,
           restaurantProfile: restaurantProfileo,
+          isloading: false,
         })
       } else {
         this.setState({
@@ -167,6 +167,7 @@ class RestaurantDetails extends Component {
     const fromLocal = localStorage.getItem('onAdd')
     const countNumberObj = obj.count
     //   console.log(countNumberObj, 'aasda')
+
     if (fromLocal === null) {
       const l = []
       l.push(obj)

@@ -102,6 +102,15 @@
 
     color: #3e4c59;
   }
+  .cart-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  .no-orders-container {
+    min-height: 80vh;
+  }
 }
 .header-tasty-kitchens {
   font-family: 'DM Sans';

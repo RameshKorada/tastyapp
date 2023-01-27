@@ -27,7 +27,7 @@
 .cart-name-container {
   display: flex;
   flex-direction: row;
-
+  justify-content: flex-start;
   align-items: center;
   width: 33.33%;
 }
@@ -41,9 +41,10 @@
   color: #183b56;
   margin-bottom: 10px;
 }
-.items-count {
+
+.add-container {
   width: 33.33%;
-  text-align: center;
+  text-align: flex-start;
 }
 .count-container {
   display: flex;
@@ -55,6 +56,7 @@
 .add-element {
   color: #475569;
 }
+
 @media (max-width: 750px) {
   .cart-image {
     width: 120px;

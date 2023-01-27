@@ -108,7 +108,6 @@
   /* Light / blue-gray / 700 */
 
   color: #334155;
-  padding-left: 10px;
   padding-right: 10px;
 }
 .arrow-icons {
@@ -136,12 +135,14 @@
 .sort-select {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .select-element {
   outline: none;
+  background-color: transparent;
   border-color: transparent;
-  padding: 0px;
+  font-size: 15px;
 }
 @media (max-width: 560px) {
   .select-element {

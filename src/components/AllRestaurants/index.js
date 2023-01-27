@@ -4,7 +4,15 @@ import './index.css'
 
 const AllRestaurants = props => {
   const {allRestauratnsList} = props
-  const {resName, imageUrl, userRating, totalReview, id} = allRestauratnsList
+  const {
+    resName,
+    imageUrl,
+    userRating,
+    totalReview,
+    id,
+    kindName,
+  } = allRestauratnsList
+
   return (
     <Link className="linked-elements" to={`/restaurant/${id}`}>
       <li testid="restaurant-item" className="rest-list">
@@ -16,7 +24,7 @@ const AllRestaurants = props => {
           />
           <div className="name-fast-rating">
             <h1 className="res-name">{resName}</h1>
-            <p className="fast-foodItems">Faast Food</p>
+            <p className="fast-foodItems">{kindName}</p>
             <p className="reviews">
               <MdStarRate className="star" /> {userRating}
               <span className="total-span">({totalReview} ratings)</span>

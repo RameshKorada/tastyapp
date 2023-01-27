@@ -25,7 +25,6 @@ const AllItems = props => {
 
   const onAddbutton = () => {
     //   console.log(eachItem)
-    localStorage.setItem('asdd', 'asadas')
     const obj = {
       ...eachItem,
     }
@@ -51,19 +50,19 @@ const AllItems = props => {
               onClick={onReduce}
               className="add-remove-button"
               type="button"
-              testid="minus"
+              testid="decrement-count"
             >
               <BsDashSquare />
             </button>
-            <span testid="active-count" className="add-element">
+            <p testid="active-count" className="add-element">
               {count}
-            </span>
+            </p>
 
             <button
               onClick={onIncrease}
               className="add-remove-button"
               type="button"
-              testid="plus"
+              testid="increment-count"
             >
               <BsPlusSquare className="plus-minus-button" />
             </button>

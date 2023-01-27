@@ -1,7 +1,11 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import {BsArrowLeftSquare, BsArrowRightSquare} from 'react-icons/bs'
+import {
+  BsArrowLeftSquare,
+  BsArrowRightSquare,
+  BsFilterLeft,
+} from 'react-icons/bs'
 import Header from '../Header'
 import ReactSlick from '../ReactSlick'
 import SelectOptions from '../SelectOptions'
@@ -26,9 +30,7 @@ const sortByOptions = [
 class HomeRoute extends Component {
   state = {
     isloading: true,
-    search: '',
     allRestaurantsList: [],
-    searchinput: '',
     page: 1,
     isloadingPage: true,
     sortByOptionsId: sortByOptions[1].value,
@@ -42,7 +44,7 @@ class HomeRoute extends Component {
 
   allrestaurantsApi = async () => {
     const jwtToken = Cookies.get('jwt_token')
-    const {sortByOptionsId, page, searchinput} = this.state
+    const {sortByOptionsId, page} = this.state
 
     const options = {
       method: 'GET',
@@ -50,10 +52,10 @@ class HomeRoute extends Component {
         Authorization: `Bearer ${jwtToken}`,
       },
     }
-    const limit = 9
-    const offset = (page - 1) * limit
+    const limitValue = 9
+    const offsetValue = (page - 1) * limitValue
 
-    const url = `https://apis.ccbp.in/restaurants-list?search=${searchinput}&offset=${offset}&limit=${limit}&sort_by_rating=${sortByOptionsId}`
+    const url = `https://apis.ccbp.in/restaurants-list?offset=${offsetValue}&limit=${limitValue}&sort_by_rating=${sortByOptionsId}`
 
     const allRestaurantsJsonData = await fetch(url, options)
     const allRestaurantsJs = await allRestaurantsJsonData.json()
@@ -66,6 +68,7 @@ class HomeRoute extends Component {
         resName: eachRes.name,
         userRating: eachRes.user_rating.rating,
         totalReview: eachRes.user_rating.total_reviews,
+        kindName: eachRes.cuisine,
       }))
       this.setState({
         allRestaurantsList: allRestaurants,
@@ -76,19 +79,25 @@ class HomeRoute extends Component {
   }
 
   onRightClick = () => {
-    this.setState(
-      prevState => ({
-        page: prevState.page + 1,
-        isloadingPage: !prevState.isloadingPage,
-      }),
-      this.allrestaurantsApi,
-    )
+    const {page} = this.state
+
+    if (page === 4) {
+      this.setState({page: 4}, this.allrestaurantsApi)
+    } else {
+      this.setState(
+        prevState => ({
+          page: prevState.page + 1,
+          isloadingPage: !prevState.isloadingPage,
+        }),
+        this.allrestaurantsApi,
+      )
+    }
   }
 
   onLeftClick = () => {
-    const {offset, page} = this.state
+    const {page} = this.state
 
-    if (offset !== 0 && page !== 1) {
+    if (page !== 1) {
       this.setState(
         prevState => ({
           page: prevState.page - 1,
@@ -114,11 +123,7 @@ class HomeRoute extends Component {
       isloadingPage,
       sortByOptionsId,
     } = this.state
-    // console.log(offset)
-    /*  const settings = {
-      dots: true,
-      arrows: false,
-    } */
+
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken === undefined) {
       return <Redirect to="/login" />
@@ -158,7 +163,7 @@ class HomeRoute extends Component {
                     day happy...
                   </p>
                   <div className="sort-select">
-                    <p>Sort By</p>
+                    <BsFilterLeft size={20} /> <p>Sort By</p>
                     <select
                       className="select-element"
                       onChange={this.onChangeOptions}
@@ -208,7 +213,7 @@ class HomeRoute extends Component {
                   <p className="para-pages" testid="active-page-number">
                     {page}
                   </p>
-                  <span>of 20</span>
+                  <span className="para-pages">of 4</span>
                   <button
                     type="button"
                     className="left-right-buttons"
