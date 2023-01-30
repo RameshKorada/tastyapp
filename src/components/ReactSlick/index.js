@@ -1,12 +1,14 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Slider from 'react-slick'
+import Loading from '../Loading'
 
 import Slides from '../Slides'
 
 class ReactSlick extends Component {
   state = {
     offerListOfData: [],
+    offerLoading: false,
   }
 
   componentDidMount() {
@@ -32,25 +34,33 @@ class ReactSlick extends Component {
         offerImageUrl: eachOffer.image_url,
       }))
 
-      this.setState({offerListOfData: offerData})
+      this.setState({offerListOfData: offerData, offerLoading: true})
     }
   }
 
   render() {
-    const {offerListOfData} = this.state
+    const {offerListOfData, offerLoading} = this.state
     const settings = {
       dots: true,
       arrows: false,
     }
 
     return (
-      <ul className="offers-ul">
-        <Slider {...settings} className="container">
-          {offerListOfData.map(eachOffer => (
-            <Slides key={eachOffer.id} offerImage={eachOffer} />
-          ))}
-        </Slider>
-      </ul>
+      <div>
+        {offerLoading ? (
+          <ul className="offers-ul">
+            <Slider {...settings} className="container">
+              {offerListOfData.map(eachOffer => (
+                <Slides key={eachOffer.id} offerImage={eachOffer} />
+              ))}
+            </Slider>
+          </ul>
+        ) : (
+          <div className="offer-loading" testid="restaurants-offers-loader">
+            <Loading />
+          </div>
+        )}
+      </div>
     )
   }
 }

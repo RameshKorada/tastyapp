@@ -11,11 +11,12 @@ const AllRestaurants = props => {
     totalReview,
     id,
     kindName,
+    menuType,
   } = allRestauratnsList
 
   return (
-    <Link className="linked-elements" to={`/restaurant/${id}`}>
-      <li testid="restaurant-item" className="rest-list">
+    <li testid="restaurant-item" className="rest-list">
+      <Link className="linked-elements" to={`/restaurant/${id}`}>
         <div className="restimage-name-container">
           <img
             className="restaurant-images"
@@ -31,8 +32,8 @@ const AllRestaurants = props => {
             </p>
           </div>
         </div>
-      </li>
-    </Link>
+      </Link>
+    </li>
   )
 }
 

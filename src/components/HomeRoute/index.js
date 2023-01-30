@@ -29,11 +29,11 @@ const sortByOptions = [
 
 class HomeRoute extends Component {
   state = {
-    isloading: true,
     allRestaurantsList: [],
     page: 1,
     isloadingPage: true,
     sortByOptionsId: sortByOptions[1].value,
+    search: '',
   }
 
   componentDidMount() {
@@ -44,7 +44,7 @@ class HomeRoute extends Component {
 
   allrestaurantsApi = async () => {
     const jwtToken = Cookies.get('jwt_token')
-    const {sortByOptionsId, page} = this.state
+    const {sortByOptionsId, page, search} = this.state
 
     const options = {
       method: 'GET',
@@ -55,7 +55,7 @@ class HomeRoute extends Component {
     const limitValue = 9
     const offsetValue = (page - 1) * limitValue
 
-    const url = `https://apis.ccbp.in/restaurants-list?offset=${offsetValue}&limit=${limitValue}&sort_by_rating=${sortByOptionsId}`
+    const url = `https://apis.ccbp.in/restaurants-list/?search=${search}&offset=${offsetValue}&limit=9&sort_by_rating=${sortByOptionsId}`
 
     const allRestaurantsJsonData = await fetch(url, options)
     const allRestaurantsJs = await allRestaurantsJsonData.json()
@@ -69,11 +69,11 @@ class HomeRoute extends Component {
         userRating: eachRes.user_rating.rating,
         totalReview: eachRes.user_rating.total_reviews,
         kindName: eachRes.cuisine,
+        menuType: eachRes.menu_type,
       }))
       this.setState({
         allRestaurantsList: allRestaurants,
         isloadingPage: false,
-        isloading: false,
       })
     }
   }
@@ -117,7 +117,6 @@ class HomeRoute extends Component {
 
   render() {
     const {
-      isloading,
       allRestaurantsList,
       page,
       isloadingPage,
@@ -134,23 +133,11 @@ class HomeRoute extends Component {
         <Header />
 
         <div className="home-bg-container">
-          {isloading ? (
-            <div
-              testid="restaurants-offers-loader "
-              className="loading-container"
-            >
-              <Loading />
-            </div>
-          ) : (
-            <div className="home-section">
-              <ReactSlick />
-            </div>
-          )}
-          {isloading ? (
-            <div
-              testid="restaurants-list-loader "
-              className="loading-container"
-            >
+          <div>
+            <ReactSlick />
+          </div>
+          {isloadingPage ? (
+            <div testid="restaurants-list-loader" className="loading-container">
               <Loading />
             </div>
           ) : (
@@ -181,47 +168,38 @@ class HomeRoute extends Component {
                 </div>
                 <hr className="hr-line-home" />
                 <div className="all-restaurants-names-container">
-                  {isloadingPage ? (
-                    <div
-                      testid="restaurants-list-loader"
-                      className="loading-container"
-                    >
-                      <Loading />
+                  <div>
+                    <ul className="ul-all-restaurants">
+                      {allRestaurantsList.map(eachList => (
+                        <AllRestaurants
+                          allRestauratnsList={eachList}
+                          key={eachList.id}
+                        />
+                      ))}
+                    </ul>
+                    <div className="left-right-arrow">
+                      <button
+                        type="button"
+                        className="left-right-buttons"
+                        onClick={this.onLeftClick}
+                        testid="pagination-left-button"
+                      >
+                        <BsArrowLeftSquare className="arrow-icons" />
+                      </button>
+                      <p className="para-pages" testid="active-page-number">
+                        {page}
+                      </p>
+                      <span className="para-pages">of 4</span>
+                      <button
+                        type="button"
+                        className="left-right-buttons"
+                        onClick={this.onRightClick}
+                        testid="pagination-right-button"
+                      >
+                        <BsArrowRightSquare className="arrow-icons" />
+                      </button>
                     </div>
-                  ) : (
-                    <div>
-                      <ul className="ul-all-restaurants">
-                        {allRestaurantsList.map(eachList => (
-                          <AllRestaurants
-                            allRestauratnsList={eachList}
-                            key={eachList.id}
-                          />
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-                <div className="left-right-arrow">
-                  <button
-                    type="button"
-                    className="left-right-buttons"
-                    onClick={this.onLeftClick}
-                    testid="pagination-left-button"
-                  >
-                    <BsArrowLeftSquare className="arrow-icons" />
-                  </button>
-                  <p className="para-pages" testid="active-page-number">
-                    {page}
-                  </p>
-                  <span className="para-pages">of 4</span>
-                  <button
-                    type="button"
-                    className="left-right-buttons"
-                    onClick={this.onRightClick}
-                    testid="pagination-right-button"
-                  >
-                    <BsArrowRightSquare className="arrow-icons" />
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>

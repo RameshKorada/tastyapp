@@ -16,7 +16,7 @@ class RestaurantDetails extends Component {
     restaurantProfile: {},
     allItemsList: [],
     empList: [],
-    isloading: true,
+    isloadingRes: true,
     countNumber: 1,
   }
 
@@ -87,11 +87,11 @@ class RestaurantDetails extends Component {
         this.setState({
           allItemsList: foodItemsList,
           restaurantProfile: restaurantProfileo,
-          isloading: false,
+          isloadingRes: false,
         })
       } else {
         this.setState({
-          isloading: false,
+          isloadingRes: false,
           restaurantProfile: restaurantProfileo,
           allItemsList: parsedData,
         })
@@ -196,7 +196,7 @@ class RestaurantDetails extends Component {
       return <Redirect to="/login" />
     }
     const {
-      isloading,
+      isloadingRes,
       restaurantProfile,
       allItemsList,
       empList,
@@ -207,7 +207,7 @@ class RestaurantDetails extends Component {
       <div>
         <Header />
         <div>
-          {isloading ? (
+          {isloadingRes ? (
             <div
               testid="restaurant-details-loader"
               className="loading-container"
