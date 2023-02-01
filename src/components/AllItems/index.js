@@ -38,7 +38,7 @@ const AllItems = props => {
       <div>
         <h1 className="item-name-element">{name}</h1>
         <div className="star-rating">
-          <BiRupee /> <p className="item-cost">{cost}.00</p>
+          <BiRupee /> <p className="item-cost">{cost}</p>
         </div>
         <div className="star-rating">
           <MdStarRate className="star" />

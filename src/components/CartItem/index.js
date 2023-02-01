@@ -8,13 +8,13 @@ const CartItem = props => {
   const {name, cost, imageUrl, count, id} = eachItem
 
   const decreaseItems = () => {
-    const fromlocal = localStorage.getItem('onAdd')
+    const fromlocal = localStorage.getItem('cartData')
     const parsedData = JSON.parse(fromlocal)
     console.log(id)
     if (count === 1) {
       const filterData = parsedData.filter(eachOne => eachOne.id !== id)
       console.log(filterData)
-      localStorage.setItem('onAdd', JSON.stringify(filterData))
+      localStorage.setItem('cartData', JSON.stringify(filterData))
       fromlocalstorage()
     } else {
       const costValue = cost / count
@@ -34,14 +34,14 @@ const CartItem = props => {
         obj.id === id ? {...obj, count: obj.count - 1} : obj,
       )
       localStorage.setItem('fromapilist', JSON.stringify(updatedList))
-      localStorage.setItem('onAdd', JSON.stringify(filterData))
+      localStorage.setItem('cartData', JSON.stringify(filterData))
 
       fromlocalstorage()
     }
   }
 
   const increaseItems = () => {
-    const fromlocal = localStorage.getItem('onAdd')
+    const fromlocal = localStorage.getItem('cartData')
     const parsedData = JSON.parse(fromlocal)
     console.log(id)
     const costValue = cost / count
@@ -57,7 +57,7 @@ const CartItem = props => {
       obj.id === id ? {...obj, count: obj.count + 1} : obj,
     )
     localStorage.setItem('fromapilist', JSON.stringify(updatedList))
-    localStorage.setItem('onAdd', JSON.stringify(filterData))
+    localStorage.setItem('cartData', JSON.stringify(filterData))
 
     fromlocalstorage()
   }
@@ -65,22 +65,28 @@ const CartItem = props => {
     <li testid="cartItem">
       <div className="cart-item-list ">
         <div className="cart-name-container" testid="cartItem">
-          <img className="cart-image" src={imageUrl} alt={name} />
+          <div testid="cartItem">
+            <img className="cart-image" src={imageUrl} alt={name} />
+          </div>
           <h1 className="item-name">{name}</h1>
         </div>
-        <div className="add-container">
+        <div className="add-container" testid="cartItem">
           <button
             className="add-remove-button"
             type="button"
             onClick={decreaseItems}
+            testid="decrement-quantity"
           >
             <BsDashSquare />
           </button>
-          <p className="add-element">{count}</p>
+          <p testid="item-quantity" className="add-element">
+            {count}
+          </p>
           <button
             className="add-remove-button"
             type="button"
             onClick={increaseItems}
+            testid="increment-quantity"
           >
             <BsPlusSquare className="plus-minus-button" />
           </button>
@@ -90,7 +96,7 @@ const CartItem = props => {
           <p className="cost-element">{cost}</p>
         </div>
       </div>
-      <div className="cart-item-list-mini ">
+      <div className="cart-item-list-mini " testid="cartItem">
         <img className="cart-image" src={imageUrl} alt={name} />
 
         <div className="add-container-mini">
@@ -114,7 +120,9 @@ const CartItem = props => {
           </div>
           <div className="cost-rupee-mini">
             <BiRupee className="rate" />
-            <p className="cost-element-mini">{cost}</p>
+            <p className="cost-element-mini" testid="total-price">
+              {cost}
+            </p>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ class Cart extends Component {
 
   fromlocalstorage = () => {
     //   const {cartList} = this.state
-    const jsonData = localStorage.getItem('onAdd')
+    const jsonData = localStorage.getItem('cartData')
     const parsedData = JSON.parse(jsonData)
     if (jsonData !== null) {
       const totalitemcost = parsedData.map(eachitem => eachitem.cost)
@@ -36,7 +36,7 @@ class Cart extends Component {
   }
 
   removieList = () => {
-    localStorage.removeItem('onAdd')
+    localStorage.removeItem('cartData')
     localStorage.removeItem('fromapilist')
   }
 

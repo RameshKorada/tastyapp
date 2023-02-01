@@ -15,7 +15,7 @@ class Header extends Component {
   componentDidMount() {
     const {match} = this.props
     const {path} = match
-    if (path === '/Cart') {
+    if (path === '/cart') {
       this.setState({colorStatus: false})
     }
   }

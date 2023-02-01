@@ -24,7 +24,7 @@ class RestaurantDetails extends Component {
     //   const {empList} = this.state
     this.restaurantItemsApi()
 
-    const fromlocal = localStorage.getItem('onAdd')
+    const fromlocal = localStorage.getItem('cartData')
 
     if (fromlocal !== null) {
       //     console.log(empList, 'iam not called')
@@ -102,7 +102,7 @@ class RestaurantDetails extends Component {
   reduceFunction = id => {
     const {empList, allItemsList} = this.state
 
-    const gettingFromLocal = localStorage.getItem('onAdd')
+    const gettingFromLocal = localStorage.getItem('cartData')
     const parsedData = JSON.parse(gettingFromLocal)
     const filterid = empList.filter(each => each.id === id)
     const filterDatanon = empList.filter(eachid => eachid.id !== id)
@@ -117,7 +117,7 @@ class RestaurantDetails extends Component {
       //   console.log('yes')
       const filterDatanonP = parsedData.filter(eachid => eachid.id !== id)
       //   console.log(filterDatanonP, 'filterDatap')
-      localStorage.setItem('onAdd', JSON.stringify(filterDatanonP))
+      localStorage.setItem('cartData', JSON.stringify(filterDatanonP))
       // this.setState({count: ccc})
       // console.log(filterDatanonP)
       this.setState({
@@ -131,7 +131,7 @@ class RestaurantDetails extends Component {
       localStorage.setItem('fromapilist', JSON.stringify(updatedList))
 
       filterDatanon.push(idobj)
-      localStorage.setItem('onAdd', JSON.stringify(filterDatanon))
+      localStorage.setItem('cartData', JSON.stringify(filterDatanon))
       this.setState({countNumber: ccc - 1, allItemsList: updatedList})
     }
   }
@@ -156,7 +156,7 @@ class RestaurantDetails extends Component {
     //   console.log(filterid)
     const costFromlocal = idobj.cost
     idobj.cost = costFromlocal + cost
-    localStorage.setItem('onAdd', JSON.stringify(filterDatanon))
+    localStorage.setItem('cartData', JSON.stringify(filterDatanon))
     this.setState({countNumber: ccc + 1, allItemsList: updatedList})
   }
 
@@ -164,7 +164,7 @@ class RestaurantDetails extends Component {
   eachtemIntoArray = obj => {
     // const {count} = this.state
 
-    const fromLocal = localStorage.getItem('onAdd')
+    const fromLocal = localStorage.getItem('cartData')
     const countNumberObj = obj.count
     //   console.log(countNumberObj, 'aasda')
 
@@ -172,7 +172,7 @@ class RestaurantDetails extends Component {
       const l = []
       l.push(obj)
 
-      localStorage.setItem('onAdd', JSON.stringify(l))
+      localStorage.setItem('cartData', JSON.stringify(l))
 
       //   console.log(filter)
 
@@ -181,11 +181,11 @@ class RestaurantDetails extends Component {
         countNumber: countNumberObj,
       }))
     } else {
-      const fromLocalst = localStorage.getItem('onAdd')
+      const fromLocalst = localStorage.getItem('cartData')
       const parsedList = JSON.parse(fromLocalst)
 
       parsedList.push(obj)
-      localStorage.setItem('onAdd', JSON.stringify(parsedList))
+      localStorage.setItem('cartData', JSON.stringify(parsedList))
       this.setState({empList: parsedList, countNumber: countNumberObj})
     }
   }
@@ -233,7 +233,7 @@ class RestaurantDetails extends Component {
                         {restaurantProfile.rating}
                       </p>
                       <p className="rating-cost">
-                        {restaurantProfile.reviewCount}+ratings
+                        {restaurantProfile.reviewCount}+ Ratings
                       </p>
                     </div>
                     <hr className="hr-line" />
@@ -241,7 +241,7 @@ class RestaurantDetails extends Component {
                       <p className="cost-rating">
                         <BiRupee /> {restaurantProfile.costPerTwo}
                       </p>
-                      <p className="rating-cost">cost for two</p>
+                      <p className="rating-cost">Cost for two</p>
                     </div>
                   </div>
                 </div>

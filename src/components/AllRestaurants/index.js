@@ -11,11 +11,10 @@ const AllRestaurants = props => {
     totalReview,
     id,
     kindName,
-    menuType,
   } = allRestauratnsList
 
   return (
-    <li testid="restaurant-item" className="rest-list">
+    <li className="rest-list" testid="restaurant-item">
       <Link className="linked-elements" to={`/restaurant/${id}`}>
         <div className="restimage-name-container">
           <img
