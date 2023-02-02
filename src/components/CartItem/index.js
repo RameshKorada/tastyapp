@@ -64,13 +64,13 @@ const CartItem = props => {
   return (
     <li testid="cartItem">
       <div className="cart-item-list ">
-        <div className="cart-name-container" testid="cartItem">
-          <div testid="cartItem">
+        <div className="cart-name-container">
+          <div>
             <img className="cart-image" src={imageUrl} alt={name} />
           </div>
           <h1 className="item-name">{name}</h1>
         </div>
-        <div className="add-container" testid="cartItem">
+        <div className="add-container">
           <button
             className="add-remove-button"
             type="button"
@@ -96,7 +96,7 @@ const CartItem = props => {
           <p className="cost-element">{cost}</p>
         </div>
       </div>
-      <div className="cart-item-list-mini " testid="cartItem">
+      {/* <div className="cart-item-list-mini " testid="cartItem">
         <img className="cart-image" src={imageUrl} alt={name} />
 
         <div className="add-container-mini">
@@ -125,7 +125,7 @@ const CartItem = props => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </li>
   )
 }

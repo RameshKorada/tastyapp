@@ -73,10 +73,14 @@ class Cart extends Component {
                 </ul>
               </div>
               <hr className="hr-line-dotted" />
-              <div className="place-total-container">
-                <h1 className="order-total">Order Total :</h1>
-                <div className="place-order-cotainer">
-                  <h1 className="order-total">₹{totalcost}.00</h1>
+              <ul className="place-total-container">
+                <li>
+                  <h1 className="order-total">Order Total : </h1>
+                </li>
+                <li className="place-order-cotainer">
+                  <p className="order-total" testid="total-price">
+                    ₹{totalcost}.00
+                  </p>
                   <Link to="/paymentsuccessed">
                     <button
                       className="place-order-button"
@@ -86,8 +90,8 @@ class Cart extends Component {
                       Place Order
                     </button>
                   </Link>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
             <div className="foot-cart">
               <Footer />

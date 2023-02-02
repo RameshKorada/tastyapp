@@ -14,8 +14,8 @@ const AllRestaurants = props => {
   } = allRestauratnsList
 
   return (
-    <li className="rest-list" testid="restaurant-item">
-      <Link className="linked-elements" to={`/restaurant/${id}`}>
+    <Link className="linked-elements" to={`/restaurant/${id}`}>
+      <li className="rest-list" testid="restaurant-item">
         <div className="restimage-name-container">
           <img
             className="restaurant-images"
@@ -31,8 +31,8 @@ const AllRestaurants = props => {
             </p>
           </div>
         </div>
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
 
